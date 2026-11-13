@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = '58436870-5e82bf0698eaeb441307a87a7'; // Твій ключ Pixabay
+const API_KEY = '58436870-5e82bf0698eaeb441307a87a7'; 
 axios.defaults.baseURL = 'https://pixabay.com/api/';
 
 export async function getImagesByQuery(query, page = 1) {
@@ -10,11 +10,11 @@ export async function getImagesByQuery(query, page = 1) {
       q: query,
       image_type: 'photo',
       orientation: 'horizontal',
-      safesearch: 'true',
+      safesearch: true, 
       page: page,
-      per_page: 15, // Вимога ДЗ: робимо по 15 елементів на сторінку
+      per_page: 15,
     },
   });
 
-  return response.data; // Повертаємо властивість data
+  return response.data;
 }

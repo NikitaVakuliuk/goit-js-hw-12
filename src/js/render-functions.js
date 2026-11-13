@@ -34,12 +34,12 @@ export function createGallery(images) {
   lightbox.refresh();
 }
 
-// Очищення галереї
+
 export function clearGallery() {
   galleryContainer.innerHTML = '';
 }
 
-// Управління лоадером (індикатор завантаження)
+
 export function showLoader() {
   loader.classList.remove('hidden');
 }
@@ -48,7 +48,7 @@ export function hideLoader() {
   loader.classList.add('hidden');
 }
 
-// Управління кнопкою "Load more"
+
 export function showLoadMoreButton() {
   loadMoreBtn.classList.remove('hidden');
 }

@@ -19,10 +19,10 @@ let currentQuery = '';
 let currentPage = 1;
 let totalHits = 0;
 
-// Початково приховуємо кнопку Load more
+
 hideLoadMoreButton();
 
-// Пошук за сабмітом форми
+
 searchForm.addEventListener('submit', async event => {
   event.preventDefault();
   currentQuery = searchInput.value.trim();
@@ -58,12 +58,12 @@ searchForm.addEventListener('submit', async event => {
 
     createGallery(data.hits);
 
-    // Якщо результатів більше, ніж вміщує одна сторінка (15), показуємо кнопку Load more
+    
     if (totalHits > 15) {
       showLoadMoreButton();
     } else {
       hideLoadMoreButton();
-      // Якщо на першій сторінці вже кінець колекції
+    
       if (totalHits > 0) {
         iziToast.info({
           message: "We're sorry, but you've reached the end of search results.",
@@ -83,7 +83,7 @@ searchForm.addEventListener('submit', async event => {
   }
 });
 
-// Клік на кнопку "Load more"
+
 loadMoreBtn.addEventListener('click', async () => {
   currentPage += 1;
   hideLoadMoreButton();
@@ -93,7 +93,7 @@ loadMoreBtn.addEventListener('click', async () => {
     const data = await getImagesByQuery(currentQuery, currentPage);
     createGallery(data.hits);
 
-    // Плавний скрол сторінки на дві висоти картки
+    
     const galleryItem = document.querySelector('.gallery-item');
     if (galleryItem) {
       const cardHeight = galleryItem.getBoundingClientRect().height;
@@ -103,7 +103,6 @@ loadMoreBtn.addEventListener('click', async () => {
       });
     }
 
-    // Перевірка чи досягли кінця колекції (15 елементів на сторінку)
     const totalLoaded = currentPage * 15;
     if (totalLoaded >= totalHits) {
       hideLoadMoreButton();
